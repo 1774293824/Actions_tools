@@ -30,4 +30,8 @@ jobs:
     - name: Run JDQianDao
       run: |
         python jd_sign.py
+      env:
+        JD_COOKIE_001: ${{ secrets.JD_COOKIE_my }}
+        email_pwd: ${{ secrets.EMAIL_PASSWORD }}
+        IKU_PSD: ${{ secrets.IKU_PSD }}
 
