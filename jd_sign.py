@@ -13,6 +13,7 @@ JD_cookie = os.environ.get("JD_COOKIE_001")
 iku_psd = os.environ.get("IKU_PSD")
 email_pwd = os.environ.get("EMAIL_PASSWORD")
 
+
 def send_email(subject, body):
     sender_email = "3521850769@qq.com"
     sender_password = email_pwd
@@ -66,13 +67,13 @@ def iku_signin(username, password):
 
 
 title = jd_signin(JD_cookie)
-if title != 0 or title != '0':
+if title != '0':
     subject = "GitHub Actions 运行异常"
     body = f"您的 GitHub Actions 发生了错误，请尽快处理。错误时间：{time.strftime("%Y-%m-%d")}"
     send_email(subject, body)
     print("发送告警邮件")
 else:
-    print(f"京东签到成功，签到时间:{time_now}")
+    print(f"京东签到success，签到时间:{time_now}")
 
 assert_data = iku_signin('a2401193521@qq.com', f'{iku_psd}')
 
