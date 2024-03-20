@@ -28,9 +28,10 @@ jobs:
           pip install requests 
         fi
     - name: Run JDQianDao
-      run: |
-        python jd_sign.py
-    env:
+      env:
         JD_COOKIE_001: ${{ secrets.JD_COOKIE_my }}
         email_pwd: ${{ secrets.EMAIL_PASSWORD }}
         IKU_PSD: ${{ secrets.IKU_PSD }}
+      run: |
+        python jd_sign.py
+    
