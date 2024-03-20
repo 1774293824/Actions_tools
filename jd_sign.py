@@ -46,7 +46,7 @@ def jd_signin(cookie):
     r = requests.post(url=url, headers=headers)
     json_data = r.text.replace("jsonp_1645885800574_58482(", "").rstrip(");")
     res_title = json.loads(json_data)
-    res_title = res_title.get('data').get('dailyAward').get('title')
+    res_title = res_title.get("code")
     return res_title
 
 
@@ -66,7 +66,7 @@ def iku_signin(username, password):
 
 
 title = jd_signin(JD_cookie)
-if str(title) not in ("签到成功，", "今天已签到，"):
+if title != 0 or title != '0':
     subject = "GitHub Actions 运行异常"
     body = f"您的 GitHub Actions 发生了错误，请尽快处理。错误时间：{time.strftime("%Y-%m-%d")}"
     send_email(subject, body)
